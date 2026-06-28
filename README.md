@@ -5,6 +5,7 @@ A Windows infrastructure lab built in **VirtualBox** to simulate a small enterpr
 ## 1. Overview
 
 This lab simulates a small enterprise consisting of **IT** and **Sales** departments. A single Windows Server provides centralized infrastructure services including **Active Directory**, **DNS**, **DHCP**, **RRAS**, **File Services**, **Group Policy**, and **Windows LAPS**.
+
 <img width="600" height="500" alt="image" src="https://github.com/user-attachments/assets/b7748fa3-ec56-40b8-a3ad-70f033a66819" />
 
 
