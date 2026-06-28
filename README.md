@@ -1,4 +1,4 @@
-# Windows Infrastructure Lab for Small Enterprise Administration
+# Building Small Enterprise Infrastructure with Windows Server and Active Directory
 
 A Windows infrastructure lab built in **VirtualBox** to simulate a small enterprise environment. The project demonstrates centralized identity, networking, storage, and endpoint management using **Windows Server 2025**.
 
