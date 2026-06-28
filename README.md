@@ -6,7 +6,7 @@ A Windows infrastructure lab built in **VirtualBox** to simulate a small enterpr
 
 This lab simulates a small enterprise consisting of **IT** and **Sales** departments. A single Windows Server provides centralized infrastructure services including **Active Directory**, **DNS**, **DHCP**, **RRAS**, **File Services**, **Group Policy**, and **Windows LAPS**.
 
-<img width="600" height="500" alt="image" src="https://github.com/user-attachments/assets/b7748fa3-ec56-40b8-a3ad-70f033a66819" />
+<img width="600" height="480" alt="image" src="https://github.com/user-attachments/assets/b7748fa3-ec56-40b8-a3ad-70f033a66819" />
 
 
 ### Infrastructure Summary
@@ -25,7 +25,13 @@ This lab simulates a small enterprise consisting of **IT** and **Sales** departm
 ## 2. Infrastructure Design
 
 ### 2.1 Network Architecture
-<img width="700" height="400" alt="image" src="https://github.com/user-attachments/assets/a1432262-0e8d-4553-93b5-1d44df873610" />
+| Network | Subnet | Purpose |
+|---------|--------|---------|
+| IT | 192.168.10.0/24 | IT department |
+| Sales | 192.168.20.0/24 | Sales department |
+| NAT/Public | VirtualBox NAT | Outbound Internet access |
+
+<img width="800" height="400" alt="image" src="https://github.com/user-attachments/assets/a1432262-0e8d-4553-93b5-1d44df873610" />
 
 The Windows Server is configured with:
 
@@ -49,7 +55,7 @@ Clients can communicate across subnets while using the server as their default g
 
 The Active Directory environment is organized using **department-based Organizational Units** and **security groups** to simplify administration and policy-based management.
 
-<img width="700" height="400" alt="image" src="https://github.com/user-attachments/assets/695fafb6-c245-4bb3-ac80-9267311394d7" />
+<img width="700" height="380" alt="image" src="https://github.com/user-attachments/assets/695fafb6-c245-4bb3-ac80-9267311394d7" />
 
 ## 4. Endpoint Management Using GPOs
 
@@ -59,14 +65,14 @@ Group Policy is used to centrally configure domain-joined workstations.
 
 <img width="650" height="250" alt="image" src="https://github.com/user-attachments/assets/f45f6291-1fc2-44cc-b01c-5fa8b23c8c74" />
 
-Network drives are automatically mapped according to department security group membership, ensuring users receive the appropriate departmental resources after signing in.
+Network drives are automatically mapped according to department security group membership, ensuring users in Sales and IT department can access their department drive after signing in.
 
 ### 4.2 Windows LAPS
 
 <img width="650" height="250" alt="image" src="https://github.com/user-attachments/assets/3c23c003-e681-426e-beb1-313a8b891b16" />
 
 
-Windows LAPS automatically manages a unique local administrator password for each workstation and stores it securely in Active Directory. A local administrator account named `lapsadmin` is created using a startup script through GPO.
+Windows LAPS automatically manages a unique local administrator password for each workstation and stores it securely in Active Directory. A local administrator account named `lapsadmin` is created using a startup script `create-local-admin.ps` through GPO.
 
 Together, **DesktopAdmin** and **Windows LAPS** provide both operational administration and secure emergency access.
 
@@ -74,13 +80,13 @@ Together, **DesktopAdmin** and **Windows LAPS** provide both operational adminis
 
 <img width="650" height="300" alt="image" src="https://github.com/user-attachments/assets/09d632cc-bee2-4e6c-a312-e1f764f7398e" />
 
-A domain security group (`svg-DesktopAdmin`) is automatically added to the local **Administrators** group, allowing authorized IT staff to manage workstations without manual configuration.
+A domain security group (`svg-DesktopAdmin`) is automatically added to the local **Administrators** group in all domain-joined computers, allowing authorized IT staff to manage workstations without manual configuration.
 
 ## 5. Storage & File Services
 
 Departmental file shares are hosted on a **Dynamic Volume** created from **five virtual disks**, separating user data from the operating system volume.
 
-<img width="650" height="450" alt="image" src="https://github.com/user-attachments/assets/a88f6ed4-86f9-4b97-a1f9-e585bdb8007f" />
+<img width="600" height="430" alt="image" src="https://github.com/user-attachments/assets/a88f6ed4-86f9-4b97-a1f9-e585bdb8007f" />
 
 Folder access is controlled using **NTFS permissions** together with **Active Directory security groups**.
 
