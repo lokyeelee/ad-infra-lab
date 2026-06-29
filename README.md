@@ -74,7 +74,7 @@ Network drives are automatically mapped according to department security group m
 
 Windows LAPS automatically manages a unique local administrator password for each workstation and stores it securely in Active Directory. A local administrator account named `lapsadmin` is created using a startup script `create-local-admin.ps` through GPO.
 
-Together, **DesktopAdmin** and **Windows LAPS** provide both operational administration and secure emergency access.
+Together, **the GPO for local administrator delegation** and **Windows LAPS** provide both operational administration and secure emergency access.
 
 ### 4.3 Local Administrator Delegation
 
